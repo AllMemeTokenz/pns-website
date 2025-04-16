@@ -1,6 +1,4 @@
 "use client";
-
-import React from "react";
 import { motion } from "framer-motion";
 import { telegramLink, tokenCA, twitterLink } from "@/config";
 import toast from "react-hot-toast";
@@ -47,6 +45,50 @@ export default function HomePage() {
             </section>
           )}
 
+          {/* DexScreener Chart Section */}
+          <section className="w-full flex mt-10 mb-10 flex-col items-center justify-center">
+            <motion.div
+              className="w-full max-w-4xl"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <h2 className="font-bold text-[28px] lg:text-[32px] text-center mb-6 text-blue-950">
+                $P&S Chart
+              </h2>
+              <div className="border border-blue-950 shadow-[2px_2px_0_#483f3b] rounded-xl overflow-hidden">
+                <div
+                  style={{
+                    position: "relative",
+                    width: "100%",
+                    paddingBottom: "125%",
+                  }}
+                  className="dexscreener-embed"
+                >
+                  <iframe
+                    src="https://dexscreener.com/solana/6M19HGw9Pb7XMReRJqRueSGhgoyKo6hWf7N51qLm5cYA?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=1&chartType=usd&interval=15"
+                    style={{
+                      position: "absolute",
+                      width: "100%",
+                      height: "100%",
+                      top: 0,
+                      left: 0,
+                      border: 0,
+                    }}
+                    title="DexScreener Chart"
+                  />
+                </div>
+              </div>
+              <style jsx>{`
+                @media (min-width: 1400px) {
+                  .dexscreener-embed {
+                    padding-bottom: 65%;
+                  }
+                }
+              `}</style>
+            </motion.div>
+          </section>
+
           {/* Whitepaper Section */}
           <section className="w-full flex mt-20 flex-col items-center justify-center px-6 md:px-16">
             <motion.div
@@ -74,7 +116,7 @@ export default function HomePage() {
               transition={{ duration: 0.4, delay: 0.4 }}
             >
               <a
-                href="/whitepaper/whitepaper-catmoggy.pdf"
+                href="/whitepaper/p&s-whitepaper.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-semibold cursor-pointer px-4 uppercase border border-blue-950 shadow-[2px_2px_0_#483f3b] active:shadow-[0.5px_0.5px_0_#483f3b] active:translate-x-[1px] active:translate-y-[1px] text-blue-50 active:scale-[0.99] transition-all ease-linear duration-100 hover:bg-blue-950/80 active:bg-blue-950/90 bg-blue-950/90 text-[17px] py-2 rounded-xl flex items-center"
